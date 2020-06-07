@@ -1,0 +1,333 @@
+html {
+    background-color: rgba(185, 185, 185, 0.1);
+    /* background-color: #fff; */
+}
+
+body {
+    font-family: custom6;
+}
+
+.imglogo {
+    max-width: 125px;
+    max-height: 125px;
+    width: auto;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 10px;
+}
+
+.fontlogo {
+    text-align: center;
+    font-family: custom7;
+    font-size: 30px;
+}
+
+.footerfont {
+    clear: both;
+    display: block;
+    padding: 7px 0 7px 0;
+    text-align: center;
+    font-family: custom7;
+    font-size: 20px;
+    color: black;
+}
+
+.backgrounddiv {
+    background-color: rgb(36, 36, 36);
+    color: white;
+}
+
+.backgrounddiv2 {
+    background-color: rgba(36, 36, 36, 0.75);
+    color: white;
+}
+
+.container {
+    width: 88%;
+    height: auto;
+    margin: auto;
+    padding: 20px;
+    /* background-color: red; */
+}
+
+.pagecontainer {
+    width: auto;
+    height: auto;
+    padding: 10px;
+    text-align: justify;
+    align-content: center;
+    display: block;
+    z-index: 0;
+    margin-left: auto;
+    margin-right: auto;
+    /* background-color: rebeccapurple; */
+}
+
+.maincontainer {
+    margin: 5px auto;
+    width: 80%;
+    height: auto;
+    /* background-color: burlywood; */
+}
+
+.formcontainer {
+    width: 60%;
+    height: auto;
+    padding: 10px;
+    text-align: justify;
+    align-content: center;
+    display: block;
+    z-index: 0;
+    margin-left: auto;
+    margin-right: auto;
+    /* background-color: goldenrod; */
+    align-items: center;
+}
+
+.topnav {
+    overflow: hidden;
+    background-color: rgb(36, 36, 36);
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: sticky;
+    top: 0;
+    font-family: custom4;
+    z-index: 1;
+    width: 100%;
+    text-align: center;
+}
+
+.topnav a {
+    float: right;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.topnav a:hover {
+    background-color: rgb(255, 255, 255);
+    color: black;
+}
+
+.topnav .icon {
+    display: none;
+}
+
+div.desc {
+    padding: 3px;
+    text-align: left;
+}
+
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+div.maincontainer hr {
+    border: 1px solid rgb(43, 43, 43);
+    border-radius: 5px;
+    opacity: 0.5;
+    margin: 20px 0px 20px 0px;
+}
+
+div.pagecontainer p {
+    text-align: center;
+    font-size: 40px;
+    font-family: custom9;
+}
+
+div.desc p {
+    text-align: center;
+    font-size: 20px;
+    font-family: custom7;
+}
+
+.imgprofile {
+    max-width: 35%;
+    max-height: 35%;
+    width: auto;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 10px;
+}
+
+div.topnav p {
+    float: left;
+    color: white;
+    font-family: custom7;
+    font-size: 15px;
+    margin-right: 10px;
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+.topnav-centered a {
+    float: none;
+    text-align: center;
+    display: inline-block;
+}
+
+.inputtext {
+    font-family: custom4;
+    font-size: 20px;
+}
+
+.btncontainer {
+    width: 50%;
+    text-align: center;
+}
+
+.imglogofooter {
+    max-width: 55px;
+    max-height: 55px;
+    width: auto;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 10px;
+}
+
+a.dropdown {
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.backgrounddiv2btn {
+    font-family: custom4;
+    font-size: 20px;
+    border: 0px;
+    background: none;
+    color: white;
+    height: 8%;
+}
+
+.backgrounddiv2btn:hover {
+    background-color: rgb(160, 160, 160);
+}
+
+
+/* RULES */
+
+@media screen and (max-width: 600px) {
+    .topnav a:not(:first-child) {
+        display: inline-block;
+    }
+    .topnav a.icon {
+        float: right;
+        display: inline-block;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .topnav.responsive a {
+        position: sticky;
+        top: 0;
+        float: none;
+        display: inline-block;
+        text-align: left;
+    }
+}
+
+@media only screen and (max-width: 1280px) and (min-width: 500px) {
+    .maincontainer,
+    .formcontainer {
+        width: auto;
+        height: auto;
+        padding: 1px;
+        text-align: justify;
+        align-content: center;
+        display: block;
+        z-index: 0;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .maincontainer,
+    .formcontainer {
+        width: auto;
+        height: auto;
+        padding: 1px;
+        text-align: justify;
+        align-content: center;
+        display: block;
+        z-index: 0;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+
+/* FONTS */
+
+@font-face {
+    font-family: custom1;
+    src: url('../fonts/AlexBrush-Regular.ttf');
+}
+
+@font-face {
+    font-family: custom2;
+    src: url('../fonts/Amatic-Bold.ttf');
+}
+
+@font-face {
+    font-family: custom3;
+    src: url('../fonts/AmaticSC-Regular.ttf');
+}
+
+@font-face {
+    font-family: custom4;
+    src: url('../fonts/delius-regular.ttf');
+}
+
+@font-face {
+    font-family: custom5;
+    src: url('../fonts/GloriaHallelujah.ttf');
+}
+
+@font-face {
+    font-family: custom6;
+    src: url('../fonts/KOMTXTKB.ttf');
+}
+
+@font-face {
+    font-family: custom7;
+    src: url('../fonts/Solway-Regular.otf');
+}
+
+@font-face {
+    font-family: custom8;
+    src: url('../fonts/SomeTimeLater.otf');
+}
+
+@font-face {
+    font-family: custom9;
+    src: url('../fonts/TAGACNB_.ttf');
+}
