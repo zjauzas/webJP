@@ -5,6 +5,8 @@ html {
 
 body {
     font-family: custom6;
+    background-color: #093145;
+    color: #f2f3f4;
 }
 
 .imglogo {
@@ -30,18 +32,18 @@ body {
     padding: 7px 0 7px 0;
     text-align: center;
     font-family: custom7;
-    font-size: 20px;
-    color: black;
+    font-size: 18px;
+    color: #f2f3f4;
 }
 
 .backgrounddiv {
-    background-color: rgb(36, 36, 36);
-    color: white;
+    background-color: #efd469;
 }
 
 .backgrounddiv2 {
-    background-color: rgba(36, 36, 36, 0.75);
+    background-color: #3c6478;
     color: white;
+    border-radius: 5px;
 }
 
 .container {
@@ -72,23 +74,9 @@ body {
     /* background-color: burlywood; */
 }
 
-.formcontainer {
-    width: 60%;
-    height: auto;
-    padding: 10px;
-    text-align: justify;
-    align-content: center;
-    display: block;
-    z-index: 0;
-    margin-left: auto;
-    margin-right: auto;
-    /* background-color: goldenrod; */
-    align-items: center;
-}
-
 .topnav {
     overflow: hidden;
-    background-color: rgb(36, 36, 36);
+    background-color: #efd469;
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -98,12 +86,13 @@ body {
     z-index: 1;
     width: 100%;
     text-align: center;
+    font-weight: bolder;
 }
 
 .topnav a {
     float: right;
     display: block;
-    color: #f2f2f2;
+    color: #373d3f;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -111,7 +100,7 @@ body {
 }
 
 .topnav a:hover {
-    background-color: rgb(255, 255, 255);
+    background-color: #bca136;
     color: black;
 }
 
@@ -131,7 +120,7 @@ div.desc {
 }
 
 div.maincontainer hr {
-    border: 1px solid rgb(43, 43, 43);
+    border: 1.5px solid rgb(255, 255, 255);
     border-radius: 5px;
     opacity: 0.5;
     margin: 20px 0px 20px 0px;
@@ -140,13 +129,7 @@ div.maincontainer hr {
 div.pagecontainer p {
     text-align: center;
     font-size: 40px;
-    font-family: custom9;
-}
-
-div.desc p {
-    text-align: center;
-    font-size: 20px;
-    font-family: custom7;
+    font-family: custom4;
 }
 
 .imgprofile {
@@ -182,8 +165,22 @@ div.topnav p {
 }
 
 .btncontainer {
-    width: 50%;
+    width: 100%;
     text-align: center;
+    font-size: 17px;
+    margin-top: 40px;
+    padding: 10px;
+    background-color: #093145;
+    color: efd469;
+    border: 0px;
+    border-radius: 25px;
+}
+
+.btncontainer:hover {
+    background-color: #bca136;
+    color: #373d3f;
+    border: 0px;
+    font-weight: bolder;
 }
 
 .imglogofooter {
@@ -231,15 +228,55 @@ a.dropdown {
     background-color: rgb(160, 160, 160);
 }
 
+.form {
+    align-items: left;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-border {
+    background: -webkit-linear-gradient(right, #8a8a8a, #363636);
+    height: 1px;
+    width: 100%;
+}
+
+.form-content {
+    border: none;
+    outline: none;
+    padding: 14px 14px 5px 5px;
+}
+
+#card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.65);
+    max-height: 450px;
+    height: 100%;
+    margin: 6rem auto 8.1rem auto;
+    max-width: 500px;
+    width: 100%;
+    margin-top: 5%;
+}
+
+#card-content {
+    font-size: 17px;
+    font-family: custom4;
+    padding: 15px 45px;
+    padding-top: 7%;
+    color: black;
+    font-weight: bold;
+}
+
+.textinsidecard {
+    font-size: 15px;
+    text-align: center;
+}
+
 
 /* RULES */
 
 @media screen and (max-width: 600px) {
     .topnav a:not(:first-child) {
-        display: inline-block;
-    }
-    .topnav a.icon {
-        float: right;
         display: inline-block;
     }
 }
@@ -256,7 +293,7 @@ a.dropdown {
 
 @media only screen and (max-width: 1280px) and (min-width: 500px) {
     .maincontainer,
-    .formcontainer {
+    #card {
         width: auto;
         height: auto;
         padding: 1px;
@@ -271,7 +308,7 @@ a.dropdown {
 
 @media only screen and (max-width: 500px) {
     .maincontainer,
-    .formcontainer {
+    #card {
         width: auto;
         height: auto;
         padding: 1px;

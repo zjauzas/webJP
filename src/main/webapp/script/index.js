@@ -14,45 +14,44 @@
     firebase.initializeApp(firebaseConfig);
     // firebase.analytics();
 
-
     // initialize the component with const
     const txtEmail = document.getElementById('email');
     const txtPassword = document.getElementById('password');
-    const btnSignIn = document.getElementById('btnSignIn');
+    const txtEmailSignUp = document.getElementById('emailSignUp');
+    const txtPasswordSignUp = document.getElementById('passwordSignUp');
 
-    // add signin btn event
+    // add signin btn event    
+    const btnSignIn = document.getElementById('btnSignIn');
     btnSignIn.addEventListener('click', e => {
         // get email and password
         const email = txtEmail.value;
         const password = txtPassword.value;
         const auth = firebase.auth();
         //signin 
-        const promise = auth.signInWithEmailAndPassword(email, password);
-        promise.catch(e => console.log(e.message))
+        const loggedin = auth.signInWithEmailAndPassword(email, password);
+        loggedin.catch(e => console.log(e.message))
     });
 
+    const btnSignUp = document.getElementById('btnSignUp');
     btnSignUp.addEventListener('click', e => {
         // get email and password
-        const email = txtEmail.value;
-        const password = txtPassword.value;
+        const email = txtEmailSignUp.value;
+        const password = txtPasswordSignUp.value;
         const auth = firebase.auth();
         //signin 
-        const promise = auth.createUserWithEmailAndPassword(email, password);
-        promise.catch(e => console.log(e.message))
-    });
-
-    btnSignOut.addEventListener('click', e => {
-        firebase.auth().signOut();
+        const loggedin = auth.createUserWithEmailAndPassword(email, password);
+        loggedin.catch(e => console.log(e.message))
+        alert('signup berhasil');
     });
 
     firebase.auth().onAuthStateChanged(firebaseUser => {
         if (firebaseUser) {
+            window.location = 'home.jsp';
             console.log(firebaseUser);
         } else {
             console.log('not logged in');
         }
     });
-
 
     const btnSignInGoogle = document.getElementById('btnSignInGoogle');
     btnSignInGoogle.addEventListener('click', e => {
@@ -78,12 +77,10 @@
         });
     });
 
-
-
-
-
-
-
+    // const btnSignOut = document.getElementById('btnSignOut');
+    // btnSignOut.addEventListener('click', e => {
+    //     firebase.auth().signOut();
+    // });
 
 
 
