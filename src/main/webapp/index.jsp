@@ -24,8 +24,8 @@
 	
 	    <div class="topnav" id="topnavnav">
 	        <div class="topnav-centered">
-	            <a href="index.jsp#Signin" onclick="navnav()">Sign In</a>
-	            <a href="index.jsp#Signup" onclick="navnav()">Sign Up</a>
+	            <a href="index.jsp#Signin">Sign In</a>
+	            <a href="index.jsp#Signup">Sign Up</a>
 	        </div>
 	    </div>
 	
@@ -85,7 +85,6 @@
 	        </div>
 	    </div>
 	
-	    <script type="text/javascript" src="script/script.js"></script>
 	    <script type="text/javascript" src="script/index.js"></script>
 	
 	</body>

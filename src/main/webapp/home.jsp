@@ -27,8 +27,8 @@
 
     <div class="topnav" id="topnavnav">
         <div class="topnav-centered">
-            <a href="home.jsp#daftaraktivitas" onclick="navnav()">Daftar Aktivitas</a>
-            <a href="home.jsp#datadiri" onclick="navnav()">Data Diri</a>
+            <a href="home.jsp#daftaraktivitas">Daftar Aktivitas</a>
+            <a href="home.jsp#datadiri">Data Diri</a>
         </div>
     </div>
 
@@ -72,57 +72,57 @@
                 <div class="w3-container w3-center backgrounddiv2">
                     <h2 style="font-family: custom4; font-size: 20px;">Lengkapi data diri siswa.</h2>
                 </div>
-                <button class="btncontainer" id="btnSignOut">Sign Out</button>
-                <!-- <div id="card" style="height: 45%;">
-                    <div id="card-content">
-                        <div class="form inputtext">
-                            <input placeholder="Email" id="emailSignUp" class="form-content" type="email" name="email" autocomplete="on" required />
-                            <div class="form-border"></div>
-                            <input placeholder="Password" id="passwordSignUp" class="form-content" type="password" name="password" required/>
-                            <div class="form-border"></div>
-                            <i class="far fa-eye" id="togglePasswordSignUp" style="font-size: 15px;"><a style="font-family: custom4; size: 3px;">Show Password</a></i>
-                            <button class="btncontainer" id="btnSignUp">Sign Up</button>
-                            <br>
+                <div class="cardProfile">
+                    <img src="images/bg.jpg" alt="John" style="width:100%" class="imgprofile">
+                    <p id="nama"><img src="images/nama.png" class="imgisiprofile"> Nama</p>
+                    <p id="email"><img src="images/email.png" class="imgisiprofile"> Email</p>
+                    <p id="nis"><img src="images/nis.png" class="imgisiprofile"> Induk Siswa</p>
+                    <p id="ttl"><img src="images/ttl.png" class="imgisiprofile"> Tanggal Lahir</p>
+                    <p id="jk"><img src="images/jk.png" class="imgisiprofile"> Jenis Kelamin</p>
+                    <p id="nope"><img src="images/nope.png" class="imgisiprofile"> Nomor Telepon</p>
+                    <p id="alamat"><img src="images/alamat.png" class="imgisiprofile"> Alamat</p>
+                    <p id="tempatPrakerin"><img src="images/tempatPrakerin.png" class="imgisiprofile"> Tempat Prakerin</p>
+                    <p id="namaPembimbing"><img src="images/pembimbingPrakerin.png" class="imgisiprofile"> Nama Pembimbing Prakerin</p>
+                    <button class="btncontainer w3-center" onclick="document.getElementById('ubahBtn').style.display='block'">Ubah Data Diri</button>
+                </div>
+
+                <div id="ubahBtn" class="modal">
+                    <span onclick="document.getElementById('ubahBtn').style.display='none'" class="close" title="Close Modal">&times;</span>
+                    <div class="modal-content form inputtext">
+                        <p>Data Diri</p>
+                        <hr>
+                        <input type="text" placeholder="Nama" id="namaInput" required>
+                        <input type="number" placeholder="Nomor Induk Siswa" id="nisInput" required>
+                        <input type="date" placeholder="Tanggal Lahir" id="ttlInput" required>
+                        <select class="w3-select" id="jkInput" style="margin-bottom: 15px;">
+                            <option value="" disabled selected>Jenis Kelamin</option>
+                            <option value="laki_laki">Laki-Laki</option>
+                            <option value="perempuan">Perempuan</option>
+                        </select>
+                        <input type="number" placeholder="Nomor Telepon" id="nopeInput" required>
+                        <input type="text" placeholder="Alamat" id="alamatInput" required>
+                        <select class="w3-select" id="tempatPrakerinInput" style="margin-bottom: 15px;">
+                            <option value="" disabled selected>Tempat Prakerin</option>
+                            <option value="ilvermorny">Ilvermorny</option>
+                            <option value="hogwarts">Hogwarts</option>
+                            <option value="castelobruxo">Castelobruxo</option>
+                        </select>
+                        <input type="text" placeholder="Nama Pembimbing Prakerin" name="namaPembimbingInput" required>
+                        <div class="clearfix">
+                            <button type="button" onclick="document.getElementById('ubahBtn').style.display='none'" class="cancelbtn">Cancel</button>
+                            <button type="submit" class="signupbtn">Sign Up</button>
                         </div>
                     </div>
-                </div> -->
+                </div>
+               
+                <button class="btncontainerLogout" id="btnSignOut">Sign Out</button>
+                
             </div>
             <br><br><br>
         </div>
     </div>
 
-<!--     <script type="text/javascript" src="script/script.js"></script>
-    <script type="text/javascript" src="script/index.js"></script> -->
-
-    <script>
-        const firebaseConfig = {
-            apiKey: "AIzaSyCjutuAcjqKCwCGM8PkkBBs9wFVgyRAU3U",
-            authDomain: "jurnalprakerin.firebaseapp.com",
-            databaseURL: "https://jurnalprakerin.firebaseio.com",
-            projectId: "jurnalprakerin",
-            storageBucket: "jurnalprakerin.appspot.com",
-            messagingSenderId: "678896514166",
-            appId: "1:678896514166:web:a48ce52f20c6bbc72d5b57",
-            measurementId: "G-ER030CHZSQ"
-        };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        // firebase.analytics();
-
-        firebase.auth().onAuthStateChanged(firebaseUser => {
-            if (firebaseUser) {
-                console.log(firebaseUser);
-            } else {
-                console.log('not logged in');
-            }
-        });
-
-        const btnSignOut = document.getElementById('btnSignOut');
-        btnSignOut.addEventListener('click', e => {
-            firebase.auth().signOut();
-            window.location.href = 'index.jsp';
-        });
-    </script>
+    <script type="text/javascript" src="script/home.js"></script>
 
 </body>
 
