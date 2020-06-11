@@ -310,26 +310,6 @@ div.cardProfile p {
     float: initial;
 }
 
-.btncontainerLogout {
-    width: 75%;
-    text-align: center;
-    font-size: 17px;
-    margin-top: 80px;
-    padding: 10px;
-    background-color: #efd469;
-    color: #093145;
-    border: 0px;
-    border-radius: 25px;
-    font-family: custom4;
-    font-weight: bold;
-}
-
-.btncontainerLogout:hover {
-    background-color: #3c6478;
-    color: #f2f3f4;
-    font-weight: bolder;
-}
-
 input[type=text],
 input[type=password],
 input[type=number],
@@ -341,7 +321,7 @@ select {
     margin: 5px 0 22px 0;
     display: inline-block;
     border: none;
-    background: #f1f1f1;
+    background: #fff;
     border-radius: 5px;
 }
 
@@ -355,7 +335,7 @@ select:focus {
     outline: none;
 }
 
-button {
+.buttonProfil {
     background-color: #4CAF50;
     color: white;
     padding: 14px 20px;
@@ -366,17 +346,17 @@ button {
     opacity: 0.9;
 }
 
-button:hover {
+.buttonProfil:hover {
     opacity: 1;
 }
 
-.cancelbtn {
+.resetBtn {
     padding: 14px 20px;
     background-color: #f44336;
 }
 
-.cancelbtn,
-.signupbtn {
+.resetBtn,
+.perbaruiBtn {
     float: left;
     width: 50%;
 }
@@ -390,7 +370,7 @@ button:hover {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: #474e5d;
+    background-color: #474e5de0;
     padding-top: 50px;
 }
 
@@ -437,6 +417,66 @@ hr {
     display: table;
 }
 
+.buttonAdd {
+    background-color: #a3b86c;
+    border: none;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-radius: 50%;
+}
+
+.buttonAdd img {
+    width: 15px;
+    height: 15px;
+}
+
+button.addAktivitas {
+    float: left;
+    font-family: custom4;
+    font-size: 18px;
+    background-color: efd469;
+    padding: 5px 10px 5px 10px;
+    border-radius: 50px;
+    color: #373d3f;
+    font-weight: bold;
+    border: 0px;
+    margin-top: 20px;
+    width: 100%;
+    display: inline;
+}
+
+button.addAktivitas:hover {
+    color: #373d37;
+    font-weight: bolder;
+    background-color: #dadedf;
+}
+
+.tableList {
+    width: auto;
+    height: auto;
+    width: 100%;
+    margin: 0px auto;
+    font-size: 20px;
+    border: 5px;
+    border-color: white;
+    align-items: center;
+    text-align: center;
+    background-color: lightslategray;
+    border: 1px solid #990000;
+    border-collapse: collapse;
+}
+
+.tableList tr,
+td,
+th {
+    border: 1.5px solid white;
+    padding: 8px;
+}
+
 
 /* RULES */
 
@@ -454,12 +494,6 @@ hr {
     }
 }
 
-@media screen and (max-width: 600px) {
-    .topnav a:not(:first-child) {
-        display: inline-block;
-    }
-}
-
 @media only screen and (max-width: 1280px) and (min-width: 500px) {
     .maincontainer,
     #card {
@@ -472,6 +506,17 @@ hr {
         z-index: 0;
         margin-left: auto;
         margin-right: auto;
+    }
+    .btncontainerLogout {
+        width: 80%;
+        align-content: center;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    button.addAktivitas {
+        float: left;
+        width: 100%;
     }
 }
 
@@ -487,6 +532,10 @@ hr {
         z-index: 0;
         margin-left: auto;
         margin-right: auto;
+    }
+    button.addAktivitas {
+        float: left;
+        width: 100%;
     }
 }
 

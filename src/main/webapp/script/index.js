@@ -23,25 +23,24 @@
     // add signin btn event    
     const btnSignIn = document.getElementById('btnSignIn');
     btnSignIn.addEventListener('click', e => {
-        // get email and password
         const email = txtEmail.value;
         const password = txtPassword.value;
-        const auth = firebase.auth();
-        //signin 
-        const loggedin = auth.signInWithEmailAndPassword(email, password);
-        loggedin.catch(e => console.log(e.message))
+        firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+            // var errorCode = error.code;
+            var errorMessage = error.message;
+            window.alert("Error : " + errorMessage);
+        });
     });
 
     const btnSignUp = document.getElementById('btnSignUp');
     btnSignUp.addEventListener('click', e => {
-        // get email and password
         const email = txtEmailSignUp.value;
         const password = txtPasswordSignUp.value;
-        const auth = firebase.auth();
-        //signin 
-        const loggedin = auth.createUserWithEmailAndPassword(email, password);
-        loggedin.catch(e => console.log(e.message))
-        alert('signup berhasil');
+        firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+            // var errorCode = error.code;
+            var errorMessage = error.message;
+            window.alert("Error : " + errorMessage);
+        });
     });
 
     firebase.auth().onAuthStateChanged(firebaseUser => {
@@ -98,5 +97,6 @@
         // toggle the eye slash icon
         this.classList.toggle('fa-eye-slash');
     });
+
 
 }());
