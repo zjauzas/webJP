@@ -1,28 +1,15 @@
-const firebaseConfig = {
-        apiKey: "AIzaSyCjutuAcjqKCwCGM8PkkBBs9wFVgyRAU3U",
-        authDomain: "jurnalprakerin.firebaseapp.com",
-        databaseURL: "https://jurnalprakerin.firebaseio.com",
-        projectId: "jurnalprakerin",
-        storageBucket: "jurnalprakerin.appspot.com",
-        messagingSenderId: "678896514166",
-        appId: "1:678896514166:web:a48ce52f20c6bbc72d5b57",
-        measurementId: "G-ER030CHZSQ"
-    }
-    // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-// firebase.analytics();
+//firebase instance initialize
+const database = firebase.database();
 
 firebase.auth().onAuthStateChanged(firebaseUser => {
     if (firebaseUser) {
         console.log(firebaseUser);
-        document.getElementById("email").innerHTML = firebaseUser.email;
+        display()
     } else {
         window.location = 'index.jsp';
         console.log('not logged in');
     }
 })
-
-const database = firebase.database();
 
 const btnSignOut = document.getElementById('btnSignOut');
 btnSignOut.addEventListener('click', e => {
@@ -30,16 +17,12 @@ btnSignOut.addEventListener('click', e => {
     window.location = 'index.jsp';
 });
 
-
-
 const popupProfil = document.getElementById('ubahBtn');
 window.onclick = function(event) {
     if (event.target == popupProfil) {
         popupProfil.style.display = "none";
     }
 }
-
-
 
 const popupAktivitas = document.getElementById('addAktivitas');
 window.onclick = function(event) {
@@ -62,6 +45,26 @@ window.onclick = function(event) {
     }
 }
 
+document.getElementById('nomorKegiatanInput').addEventListener('click', e => {
+    var userId = firebase.auth().currentUser.uid;
+    firebase.database().ref('aktivitasPrakerin/' + userId).limitToFirst(1).once("value", snapshot => {
+        if (snapshot.exists()) {
+            const aktivitasRef = database.ref('aktivitasPrakerin/' + userId);
+            aktivitasRef.limitToLast(1).on('child_added', function(lastKey) {
+                var snap = lastKey.val();
+                var id_last_record = snap.nomorKegiatan;
+                var id = parseInt(id_last_record) + 1;
+                // alert(id)
+                document.getElementById("nomorKegiatanInput").value = id;
+            })
+        } else {
+            var id = 1;
+            // alert(id)
+            document.getElementById("nomorKegiatanInput").value = id;
+        }
+    });
+})
+
 const nomorKegiatan = document.getElementById('nomorKegiatanInput');
 const kegiatan = document.getElementById('kegiatanInput');
 const deskripsi_kegiatan = document.getElementById('deskripsiKegiatanInput');
@@ -71,11 +74,12 @@ const waktu = document.getElementById('waktuInput');
 
 const tambahAktivitas = document.getElementById('tambahAktivitas');
 tambahAktivitas.addEventListener('click', e => {
-    var userId = firebase.auth().currentUser.uid;
-    // alert(userId);
-    const aktivitasRef = database.ref('aktivitasPrakerin/' + userId);
     e.preventDefault();
+    var userId = firebase.auth().currentUser.uid;
+    const aktivitasRef = database.ref('aktivitasPrakerin/' + userId);
+
     aktivitasRef.child(nomorKegiatan.value).set({
+        nomorKegiatan: nomorKegiatan.value,
         kegiatan: kegiatan.value,
         deskripsi_kegiatan: deskripsi_kegiatan.value,
         tempat_kegiatan: tempat_kegiatan.value,
@@ -90,42 +94,32 @@ tambahAktivitas.addEventListener('click', e => {
 });
 
 function display() {
-
     var table = document.getElementById("activityTable").getElementsByTagName('tbody')[0];
-
-    // Membuang semua isi table
     $("#activityTable").find("tr:gt(0)").remove();
-
-    firebase.auth().onAuthStateChanged(firebaseUser => {
-        if (firebaseUser) {
-            console.log(firebaseUser);
-            document.getElementById("email").innerHTML = firebaseUser.email;
-        } else {
-            window.location = 'index.jsp';
-            console.log('not logged in');
-        }
-    })
-    const database = firebase.database();
     var userId = firebase.auth().currentUser.uid;
     const aktivitasRef = database.ref('aktivitasPrakerin/' + userId);
-    // alert(userId);
     aktivitasRef.on("child_added", function(data, prevChildKey) {
-        var childKey = data.key;
-        var dataChild = data.val();
-        var row = table.insertRow(table.rows.length);
-        var cell1 = row.insertCell(0);
-        var cell2 = row.insertCell(1);
-        var cell3 = row.insertCell(2);
-        var cell4 = row.insertCell(3);
-        var cell5 = row.insertCell(4);
-        cell1.innerHTML = childKey;
-        cell2.innerHTML = dataChild.kegiatan;
-        cell3.innerHTML = dataChild.tanggal;
-        cell4.innerHTML = dataChild.waktu;
-        cell5.innerHTML = '<button class="addAktivitas" type="button" id="update_data" onclick="updateAktivitas_display(' + childKey +
-            ')" data-toggle="modal" data-target="#updateAktivitas">Ubah Aktivitas</button><br><button class="addAktivitas" type="button" id="delete_data" onclick="deleteAktivitas_display(' + childKey +
-            ')" data-toggle="modal" data-target="#deleteAktivitas">Hapus Aktivitas</button>';
-    })
+            var childKey = data.key;
+            var dataChild = data.val();
+            var row = table.insertRow(table.rows.length);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            // var cell4 = row.insertCell(3);
+            var cell4 = row.insertCell(3);
+            var cell5 = row.insertCell(4);
+            var cell6 = row.insertCell(5);
+            cell1.innerHTML = childKey;
+            cell2.innerHTML = dataChild.kegiatan;
+            cell3.innerHTML = dataChild.deskripsi_kegiatan;
+            cell4.innerHTML = dataChild.tempat_kegiatan;
+            cell5.innerHTML = dataChild.tanggal;
+            // cell4.innerHTML = dataChild.waktu;
+            cell6.innerHTML = '<div class="bongiya"><button class="editapus" type="button" id="update_data" onclick="updateAktivitas_display(' + childKey +
+                ')" data-toggle="modal" data-target="#updateAktivitas"><img src="images/edit.png" class="imgisitabel"></button><button class="editapus" type="button" id="delete_data" onclick="deleteAktivitas_display(' + childKey +
+                ')" data-toggle="modal" data-target="#deleteAktivitas"><img src="images/hapus.png" class="imgisitabel"></button></div>';
+        })
+        // }
 }
 
 function updateAktivitas_display(id) {
@@ -197,69 +191,3 @@ function deleteAktivitas_display(id) {
         $('#waktuDelete').val(childData.waktu);
     });
 }
-
-
-
-
-
-const nama = document.getElementById('namaInput');
-const nis = document.getElementById('nisInput');
-const ttl = document.getElementById('ttlInput');
-const jk = document.getElementById('jkInput');
-const nope = document.getElementById('nopeInput');
-const alamat = document.getElementById('alamatInput');
-const tempatPrakerin = document.getElementById('tempatPrakerinInput');
-const namaPembimbing = document.getElementById('namaPembimbingInput');
-
-// firebase.auth().onAuthStateChanged(user => {
-//     if (user) {
-//         this.email = user.email;
-//     }
-// });
-
-// const btnUbahProfile = document.getElementById('btnUbahProfil');
-// btnUbahProfile.addEventListener('click', e => {
-//     e.preventDefault();
-//     var userId = firebase.auth().currentUser.uid;
-//     const siswaRef = database.ref('siswa/');
-//     siswaRef.child(userId).set({
-//         nis: nis.value,
-//         nama: nama.value,
-//         ttl: ttl.value,
-//         jk: jk.value,
-//         nomortelepon: nope.value,
-//         alamat: alamat.value,
-//         tempatPrakerin: tempatPrakerin.value,
-//         namaPembimbing: namaPembimbing.value,
-//         email: email
-//     }).catch(function(error) {
-//         var errorMessage = error.message;
-//         window.alert("Error : " + errorMessage)
-//     });
-//     alert('Data diri diubah');
-//     popupProfil.style.display = "none";
-// })
-
-// const namaTampil = document.getElementById('nama');
-// const nisTampil = document.getElementById('nis');
-// const ttlTampil = document.getElementById('ttl');
-// const jkTampil = document.getElementById('jk');
-// const nopeTampil = document.getElementById('nope');
-// const alamatTampil = document.getElementById('alamat');
-// const tempatPrakerinTampil = document.getElementById('tempatPrakerin');
-// const namaPembimbingTampil = document.getElementById('namaPembimbing');
-
-
-// var userId = firebase.auth().currentUser.uid;
-// const refById = database.ref("siswa/" + userId);
-// refById.on("value", function(snapshot) {
-//     var childData = snapshot.val();
-//     $('#nama').val(childData.nama);
-//     $('#nis').val(childData.nis);
-//     $('#ttl').val(childData.ttl);
-//     $('#jk').val(childData.jk);
-//     $('#nope').val(childData.nomortelepon);
-//     $('#alamat').val(childData.alamat);
-//     $('#tempatPrakerin').val(childData.tempatPrakerin);
-//     $('#namaPembimbing').val(childData.namaPembimbing);
-// });

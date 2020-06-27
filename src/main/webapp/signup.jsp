@@ -17,7 +17,7 @@
     <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-database.js"></script>
     <!-- <script defer src="script/init-firebase.js"></script> -->
 
-    <script defer type="text/javascript" src="script/index.js"></script>
+    <script defer type="text/javascript" src="script/signup.js"></script>
 
 </head>
 
@@ -27,30 +27,31 @@
     </p>
 </header>
 
+
 <body>
     <main>
         <div class="maincontainer" id="app">
-            <div class="container">
-                <div class="pagecontainer" id="Signin">
-                    <div id="card">
+            <div class="container" id="Signup">
+                <div class="pagecontainer">
+                    <div class="w3-container w3-center backgrounddiv2">
+                        <h2 style="font-family: custom4; font-size: 20px;">Lakukan Sign Up dengan mengisi form email dan password berikut:</h2>
+                    </div>
+                    <div id="card" style="height: 65%;">
                         <div id="card-content">
                             <div class="form inputtext">
-                                <input id="email" class="form-content" type="email" name="email" autocomplete="on" required placeholder="Email" />
+                                <input placeholder="Email" id="emailSignUp" class="form-content" type="email" name="email" autocomplete="on" required />
                                 <div class="form-border"></div>
-                                <input style="margin-top: 10px;" id="password" class="form-content" type="password" name="password" required placeholder="Password" />
+                                <input placeholder="Password" id="passwordSignUp" class="form-content" type="password" name="password" required />
                                 <div class="form-border"></div>
-                                <i class="far fa-eye" id="togglePassword" style="font-size: 15px; margin-top: 15px; "><a style="font-family: custom4; size: 3px;">Show Password</a></i>
-                                <button class="btncontainer" id="btnSignIn">Sign In</button>
+                                <i class="far fa-eye" id="togglePasswordSignUp" style="font-size: 15px; margin-top: 10px;"><a
+                                        style="font-family: custom4; size: 3px;">Show Password</a></i>
+                                <button class="btncontainer" id="btnSignUp">Sign Up</button>
                                 <div class="textinsidecard">
-                                    <br>Atau,<br>Sign Up dengan
+                                    <br>Already have an account?
                                 </div>
-                                <button onclick="window.location.href='signup.jsp'" class="btncontainer">
+                                <button onclick="window.location.href='index.jsp'" class="btncontainer">
                                     <i class="fa fa-envelope"></i> 
                                     &nbsp;&nbsp;&nbsp;Email
-                                </button>
-                                <button class="btncontainer" id="btnSignInGoogle">
-                                    <i class="fa fa-google"></i>
-                                    &nbsp;&nbsp;Google
                                 </button>
                                 <br>
                             </div>
@@ -60,7 +61,6 @@
             </div>
         </div>
     </main>
-
 </body>
 <footer class="footerfont">
     <div class="backgrounddiv"></div>
