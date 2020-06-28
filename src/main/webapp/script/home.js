@@ -79,11 +79,11 @@ tambahAktivitas.addEventListener('click', e => {
     const aktivitasRef = database.ref('aktivitasPrakerin/' + userId);
 
     if (
-        kegiatan.value == null ||
-        deskripsi_kegiatan.value == null ||
-        tempat_kegiatan.value == null ||
-        tanggal.value == null ||
-        waktu.value == null
+        kegiatan.value == "" ||
+        deskripsi_kegiatan.value == "" ||
+        tempat_kegiatan.value == "" ||
+        tanggal.value == "" ||
+        waktu.value == ""
     ) {
         alert('Tolong Isi Form Dengan Benar.');
     } else {
@@ -94,7 +94,7 @@ tambahAktivitas.addEventListener('click', e => {
             tempat_kegiatan: tempat_kegiatan.value,
             tanggal: tanggal.value,
             waktu: waktu.value
-        })
+        });
         alert('Aktivitas Ditambahkan');
         popupAktivitas.style.display = "none";
     }
@@ -127,22 +127,6 @@ function display() {
                 ')" data-toggle="modal" data-target="#deleteAktivitas"><img src="images/hapus.png" class="imgisitabel"></button></div>';
         })
         // }
-}
-
-function updateAktivitas_display(id) {
-    document.getElementById("updateAktivitas").style.display = "block";
-    $('#nomorKegiatanUpdate').val(id);
-    var userId = firebase.auth().currentUser.uid;
-    // alert(id);
-    const ref = database.ref('aktivitasPrakerin/' + userId + '/' + id);
-    ref.on("value", function(snapshot) {
-        var childData = snapshot.val();
-        $('#kegiatanUpdate').val(childData.kegiatan);
-        $('#deskripsiKegiatanUpdate').val(childData.deskripsi_kegiatan);
-        $('#tempatUpdate').val(childData.tempat_kegiatan);
-        $('#tanggalUpdate').val(childData.tanggal);
-        $('#waktuUpdate').val(childData.waktu);
-    });
 }
 
 const ubahAktivitas = document.getElementById('perbaruiAktivitas');

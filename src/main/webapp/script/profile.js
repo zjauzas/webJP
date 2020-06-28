@@ -79,15 +79,15 @@ btnUbahProfil.addEventListener('click', e => {
     const siswaRef = database.ref('siswa/' + userId);
 
     if (
-        nis.value == null ||
-        nama.value == null ||
-        ttl.value == null ||
-        jk.value == null ||
-        nope.value == null ||
-        alamat.value == null ||
-        tempatPrakerin.value == null ||
-        namaPembimbing.value == null ||
-        email.value == null
+        nis.value == "" ||
+        nama.value == "" ||
+        ttl.value == "" ||
+        jk.value == "" ||
+        nope.value == "" ||
+        alamat.value == "" ||
+        tempatPrakerin.value == "" ||
+        namaPembimbing.value == "" ||
+        email.value == ""
     ) {
         alert('Tolong Isi Form Dengan Benar.');
     } else {
