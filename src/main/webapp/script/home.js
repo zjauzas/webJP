@@ -129,6 +129,22 @@ function display() {
         // }
 }
 
+function updateAktivitas_display(id) {
+    document.getElementById("updateAktivitas").style.display = "block";
+    $('#nomorKegiatanUpdate').val(id);
+    var userId = firebase.auth().currentUser.uid;
+    // alert(id);
+    const ref = database.ref('aktivitasPrakerin/' + userId + '/' + id);
+    ref.on("value", function(snapshot) {
+        var childData = snapshot.val();
+        $('#kegiatanUpdate').val(childData.kegiatan);
+        $('#deskripsiKegiatanUpdate').val(childData.deskripsi_kegiatan);
+        $('#tempatUpdate').val(childData.tempat_kegiatan);
+        $('#tanggalUpdate').val(childData.tanggal);
+        $('#waktuUpdate').val(childData.waktu);
+    });
+}
+
 const ubahAktivitas = document.getElementById('perbaruiAktivitas');
 ubahAktivitas.addEventListener('click', e => {
     e.preventDefault();
@@ -142,18 +158,27 @@ ubahAktivitas.addEventListener('click', e => {
 
     var userId = firebase.auth().currentUser.uid;
     const ref = database.ref('aktivitasPrakerin/' + userId + '/' + noKegiatan);
-
-    ref.update({
-        "nomorKegiatan": noKegiatan,
-        "kegiatan": kegiatan,
-        "deskripsi_kegiatan": deskripsiKegiatan,
-        "tempat_kegiatan": tempat,
-        "tanggal": tanggal,
-        "waktu": waktu
-    });
-    alert('Aktivitas diperbarui.');
-    document.getElementById("updateAktivitas").style.display = "none";
-    display();
+    if (
+        noKegiatan == "" ||
+        kegiatan == "" ||
+        deskripsiKegiatan == "" ||
+        tempat == "" ||
+        waktu == ""
+    ) {
+        alert('Tolong Isi Form Dengan Benar')
+    } else {
+        ref.update({
+            "nomorKegiatan": noKegiatan,
+            "kegiatan": kegiatan,
+            "deskripsi_kegiatan": deskripsiKegiatan,
+            "tempat_kegiatan": tempat,
+            "tanggal": tanggal,
+            "waktu": waktu
+        });
+        alert('Aktivitas diperbarui.');
+        document.getElementById("updateAktivitas").style.display = "none";
+        display();
+    }
 })
 
 const deleteAktivitas = document.getElementById('hapusAktivitas');
