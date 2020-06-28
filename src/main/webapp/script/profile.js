@@ -78,23 +78,35 @@ btnUbahProfil.addEventListener('click', e => {
     var emailUser = firebase.auth().currentUser.email;
     const siswaRef = database.ref('siswa/' + userId);
 
-    siswaRef.update({
-        nis: nis.value,
-        nama: nama.value,
-        ttl: ttl.value,
-        jk: jk.value,
-        nomortelepon: nope.value,
-        alamat: alamat.value,
-        tempatPrakerin: tempatPrakerin.value,
-        namaPembimbing: namaPembimbing.value,
-        email: emailUser
-    }).catch(function(error) {
-        var errorMessage = error.message;
-        window.alert("Error : " + errorMessage)
-    });
-    alert('Data Diri diperbarui.');
-    popupProfil.style.display = "none";
-    displayOnLoad()
+    if (
+        nis.value == null ||
+        nama.value == null ||
+        ttl.value == null ||
+        jk.value == null ||
+        nope.value == null ||
+        alamat.value == null ||
+        tempatPrakerin.value == null ||
+        namaPembimbing.value == null ||
+        email.value == null
+    ) {
+        alert('Tolong Isi Form Dengan Benar.');
+    } else {
+
+        siswaRef.update({
+            nis: nis.value,
+            nama: nama.value,
+            ttl: ttl.value,
+            jk: jk.value,
+            nomortelepon: nope.value,
+            alamat: alamat.value,
+            tempatPrakerin: tempatPrakerin.value,
+            namaPembimbing: namaPembimbing.value,
+            email: emailUser
+        })
+        alert('Data Diri diperbarui.');
+        popupProfil.style.display = "none";
+        displayOnLoad()
+    }
 })
 
 function displayOnLoad() {

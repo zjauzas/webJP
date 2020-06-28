@@ -78,19 +78,26 @@ tambahAktivitas.addEventListener('click', e => {
     var userId = firebase.auth().currentUser.uid;
     const aktivitasRef = database.ref('aktivitasPrakerin/' + userId);
 
-    aktivitasRef.child(nomorKegiatan.value).set({
-        nomorKegiatan: nomorKegiatan.value,
-        kegiatan: kegiatan.value,
-        deskripsi_kegiatan: deskripsi_kegiatan.value,
-        tempat_kegiatan: tempat_kegiatan.value,
-        tanggal: tanggal.value,
-        waktu: waktu.value
-    }).catch(function(error) {
-        var errorMessage = error.message;
-        window.alert("Error : " + errorMessage)
-    });
-    alert('Aktivitas ditambahkan.');
-    popupAktivitas.style.display = "none";
+    if (
+        kegiatan.value == null ||
+        deskripsi_kegiatan.value == null ||
+        tempat_kegiatan.value == null ||
+        tanggal.value == null ||
+        waktu.value == null
+    ) {
+        alert('Tolong Isi Form Dengan Benar.');
+    } else {
+        aktivitasRef.child(nomorKegiatan.value).set({
+            nomorKegiatan: nomorKegiatan.value,
+            kegiatan: kegiatan.value,
+            deskripsi_kegiatan: deskripsi_kegiatan.value,
+            tempat_kegiatan: tempat_kegiatan.value,
+            tanggal: tanggal.value,
+            waktu: waktu.value
+        })
+        alert('Aktivitas Ditambahkan');
+        popupAktivitas.style.display = "none";
+    }
 });
 
 function display() {
